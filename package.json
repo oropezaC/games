@@ -1,0 +1,27 @@
+{
+  "name": "agenda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-js": "watchify cliente/app.js -o public/build.js",
+    "start": "nodemon servidor/app.js",
+    "iniciar": "npm run build-js & npm run start"
+  },
+  "author": "OropezacYahir",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "~1.5.8",
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.10.6"
+  },
+  "devDependencies": {
+    "watchify": "^3.7.0"
+  }
+}

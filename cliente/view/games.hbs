@@ -1,0 +1,98 @@
+<div ng-controller="videoGameCtrl" ng-init="init()" class="ui segment">
+  <div class="ui container">
+    <h1>Video Games</h1>
+    <div class="ui grid">
+      <div class="seven wide column">
+        <div class="ui form">
+          <div class="inline fields">
+            <div class="eight wide field">
+              <label>Name</label>
+              <input type="text" placeholder="Nombre" ng-model="nombreToken">
+            </div>
+            <button class="circular ui blue icon button" data-tooltip="Generar Token" ng-click="GenerarToken()">
+              <i class="icon settings"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="ui positive message" ng-show="tokenOk">
+          <i class="close icon" ng-click="hideO()"></i>
+          <div class="header">
+            Token Generado Correctamente
+          </div>
+          <p>Games <b>Guardados</b></p>
+        </div>
+
+        <div class="ui negative message" ng-show="error">
+          <i class="close icon" ng-click="hideE()"></i>
+          <div class="header">
+            Error Para Generar Token
+          </div>
+        </div>
+
+      </div>
+      <div class="nine wide column">
+        <table class="ui celled striped table" ng-show="gamesData != undefined">
+          <thead>
+            <tr><th colspan="4">
+              Games
+              <a style="float: right;"href="#" ng-click="filterGames()">Ver consolas con menos juegos</a>
+            </th>
+          </tr>
+        </thead>
+        <thead>
+          <th>Game</th>
+          <th>Desarrollado</th>
+          <th style="text-align:center;">---</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="game in gamesData">
+            <td>
+              <h4 class="ui image header">
+                <img src="{[game.imagen]}" class="ui mini rounded image">
+                <div class="content">
+                  {[game.name]}
+                  <div class="sub header">{[game.year]}
+                  </div>
+                </div>
+              </h4></td>
+              <td>{[game.developer]}</td>
+              <td style="text-align:center"><button class="mini icon ui blue button" ng-click="verGame(game)"><i class="share icon"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  {{!--modal--}}
+  <div class="ui modal" style="width:900px" id="gameModal">
+    <div class="header">{[gameItem.name]}</div>
+    <div class="content">
+      <div class="ui items">
+        <div class="item">
+          <div class="image">
+            <img src="{[gameItem.imagen]}">
+          </div>
+          <div class="content">
+            <a class="header">{[gameItem.developer]}</a>
+            <div class="meta">
+              <span>Description</span>
+            </div>
+            <div class="description">
+              <p>{[gameItem.description]}</p>
+            </div>
+            <div class="extra">
+              {[gameItem.year]}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{!--  --}}
+
+  <!--  -->
+
+</div>
