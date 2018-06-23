@@ -30,6 +30,20 @@
             Error Para Generar Token
           </div>
         </div>
+        <br>
+        <div ng-show="console">
+          <hr>
+            <table class="ui celled striped table" >
+                <thead>
+                  <th colspan="2">{[console.name]} <a style="float: right" href="#" ng-click="closeGames()">x</a> </th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in games">
+                    <td>{[item]}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
 
       </div>
       <div class="nine wide column">
@@ -37,7 +51,7 @@
           <thead>
             <tr><th colspan="4">
               Games
-              <a style="float: right;"href="#" ng-click="filterGames()">Ver consolas con menos juegos</a>
+              <a style="float: right;"href="#" ng-click="filterGames()">Ver consola con menos juegos</a>
             </th>
           </tr>
         </thead>

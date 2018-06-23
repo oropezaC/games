@@ -51,6 +51,7 @@ angular.module('mean')
 
     $scope.tokenOk = false;
     $scope.error = false;
+    $scope.viewConsole = false;
 
     $scope.init = function () {
       $scope.all()
@@ -103,12 +104,20 @@ angular.module('mean')
   $scope.filterGames =function () {
     videoGameService.filterPlays()
     .then((result)=>{
-      console.log(result.data);
-      let g = result.data
-      for (var i = 0; i < g.length; i++) {
-        g[i]
+      if (result.status == 200) {
+        // $scope.viewConsole = true;
+        $scope.console = result.data.data[0]._id[0];
+        $scope.games = result.data.data[0].games;
+        console.log($scope.console);
+      }else {
+        $scope.viewConsole = true;
       }
+
     })
+  }
+
+  $scope.closeGames = function () {
+    $scope.console = false
   }
 
 }]);

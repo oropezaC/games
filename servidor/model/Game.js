@@ -39,17 +39,30 @@ var Game = mongoose.model('Game',gameSchema);
 
   function filter() {
     return new Promise(function(resolve, reject) {
-      Game.aggregate([{$group:{_id:"$console",games:{$push:"$name"}}}],function(err,items){
+      let noSql = [
+        {
+          $group:{
+            _id:"$console" ,
+            games:{
+              $push:"$name"
+            },
+            count:{
+              $sum : 1
+            }
+          }
+        }
+      ];
+      Game.aggregate(noSql,function(err,items){
         if (!err) {
-          console.log(items);
-          resolve(items)
+          resolve({err:false,data:items})
         }else{
-          resolve(err)
-          console.log(err);
+          resolve({err:true})
         }
       })
     });
   }
+
+
 
 
 module.exports = {
